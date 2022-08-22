@@ -1,32 +1,25 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
     <router-view/>
   </div>
 </template>
+<script>
+import { mapActions } from 'vuex';
 
+export default {
+  methods: {
+    ...mapActions(['readToken'])
+  },
+  mounted() {
+    this.readToken();
+    window.location.hash="no-back-button";
+    window.location.hash="Again-No-back-button";
+    window.onhashchange=function(){window.location.hash="no-back-button";}
+  },
+}
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.form-floating>label{
+    padding: 1rem .4rem;
 }
 </style>
