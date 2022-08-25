@@ -63,4 +63,12 @@ class mensajeController extends Controller
         ]);
 
     }
+    public function eliminar(Request $request,$id)
+    {
+        $mensaje = mensaje::find($request->id );
+        if(!$mensaje) return response()->json(['message'=>'mensaje no encontrado']);
+        
+        $mensaje->delete();
+        return response()->json(['message'=>'mensaje eliminado con éxito']);
+    }
 }

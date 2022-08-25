@@ -38,4 +38,5 @@ Route::group([
     Route::post('register','App\Http\Controllers\mensajeController@registrarMensaje');
     Route::post('give','App\Http\Controllers\mensajeController@consultarMensaje');
     Route::post('readed/{id}','App\Http\Controllers\mensajeController@cambioEstado');
+    Route::post('delete/{id}','App\Http\Controllers\mensajeController@eliminar');
 });
